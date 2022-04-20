@@ -4,7 +4,9 @@
   font-family: monospace;
 }
 
-#color-pallet {
+#color-palette {
+    height: 100px;
+    width: auto;
 }
 
 .color {
@@ -18,8 +20,8 @@
   background-color: blue;
 }
 
-.red {
-  background-color: red;
+.black {
+  background-color: black;
 }
 
 .yellow {
