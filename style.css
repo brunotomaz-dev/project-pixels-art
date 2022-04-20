@@ -1,0 +1,31 @@
+#title{
+    text-align: center;
+    color: brown;
+    font-family: monospace;
+}
+
+#color-pallet {
+}
+
+.color {
+    border: black solid 1px;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
