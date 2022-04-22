@@ -37,6 +37,9 @@
   width: 40px;
   background-color: white;
   border: black 1px solid;
+  display: inline-block;
 }
 
-#pixel-board {}
+#pixel-board {
+  width: 240px;
+}
