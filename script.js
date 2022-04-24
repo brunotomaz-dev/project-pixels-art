@@ -4,7 +4,6 @@ const secondColor = document.getElementById('palette2');
 const thirdColor = document.getElementById('palette3');
 const lastColor = document.getElementById('palette4');
 let pixelCreate;
-const selectedColor = document.querySelector('.selected');
 
 // Cria 25 divs com class pixel
 for (let i = 0; i < 25; i += 1) {
@@ -12,6 +11,8 @@ for (let i = 0; i < 25; i += 1) {
   pixelCreate.className = 'pixel';
   pixelBoard.appendChild(pixelCreate);
 }
+
+firstColor.classList.add('selected');
 
 // função para selecionar cor
 function selectColor(event) {
@@ -27,14 +28,15 @@ document.querySelectorAll('.color').forEach(item => {
   item.addEventListener('click', selectColor);
 });
 
-// função para trocar cor (ainda não funciona)
+// função para trocar cor
 function changeColor(event) {
-  const cssObj = window.getComputedStyle(selectedColor, null);
+  const selectedColor = document.querySelector('.selected');
+  const cssObj = window.getComputedStyle(selectedColor);
   const bgColor = cssObj.getPropertyValue('background-color');
-  event.target.classList.add('pixelColor');
-  document.querySelectorAll('.pixelColor').style.backgroundColor = bgColor;
+  event.target.style.backgroundColor = bgColor;
 }
 
-document.querySelectorAll('.pixel').forEach(item => {
+// insere eventListener na class pixel
+document.querySelectorAll('.pixel').forEach((item) => {
   item.addEventListener('click', changeColor);
 });
