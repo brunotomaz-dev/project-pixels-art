@@ -12,6 +12,7 @@ for (let i = 0; i < 25; i += 1) {
   pixelBoard.appendChild(pixelCreate);
 }
 
+// inicia com cor preta selecionada
 firstColor.classList.add('selected');
 
 // função para selecionar cor
@@ -24,7 +25,7 @@ function selectColor(event) {
 }
 
 // insere eventListener em toda class color
-document.querySelectorAll('.color').forEach(item => {
+document.querySelectorAll('.color').forEach((item) => {
   item.addEventListener('click', selectColor);
 });
 
@@ -40,3 +41,21 @@ function changeColor(event) {
 document.querySelectorAll('.pixel').forEach((item) => {
   item.addEventListener('click', changeColor);
 });
+
+// cria botão com id clear-board
+const clear = document.createElement('button');
+clear.id = 'clear-board';
+clear.innerText = 'Limpar';
+const colorPalette = document.querySelector('#color-palette');
+document.body.insertBefore(clear, pixelBoard);
+
+// função para limpar pixel por pixel
+function clearBoard() {
+  const pixels = document.querySelectorAll('.pixel');
+  for (let i = 0; i < pixels.length; i += 1) {
+    pixels[i].style.backgroundColor = 'white';
+  }
+}
+
+// eventListener para o botão
+document.querySelector('#clear-board').addEventListener('click', clearBoard);

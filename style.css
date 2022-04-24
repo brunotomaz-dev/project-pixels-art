@@ -1,6 +1,5 @@
 #title {
-  text-align: center;
-  color: brown;
+  color: red;
   font-family: monospace;
 }
 
@@ -32,6 +31,10 @@
   background-color: green;
 }
 
+.white {
+  background-color: white;
+}
+
 .pixel {
   height: 40px;
   width: 40px;
@@ -42,4 +45,9 @@
 
 #pixel-board {
   width: 240px;
+}
+
+#clear-board {
+  margin-bottom: 10px;
+  width: 210px;
 }
