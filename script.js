@@ -103,3 +103,13 @@ function altSize() {
 }
 
 document.querySelector('#generate-board').addEventListener('click', altSize);
+
+// consulta feita em https://javascript.plainenglish.io/build-a-random-color-generator-with-javascript-31061a6b99ae
+function mixColor() {
+  const colorRandom = Math.floor(Math.random() * 16777215).toString(16);
+  return colorRandom;
+}
+
+secondColor.style.backgroundColor = `#${mixColor()}`;
+thirdColor.style.backgroundColor = `#${mixColor()}`;
+lastColor.style.backgroundColor = `#${mixColor()}`;
