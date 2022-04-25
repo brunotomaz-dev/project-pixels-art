@@ -3,14 +3,23 @@ const firstColor = document.getElementById('palette1');
 const secondColor = document.getElementById('palette2');
 const thirdColor = document.getElementById('palette3');
 const lastColor = document.getElementById('palette4');
-let pixelCreate;
 
-// Cria 25 divs com class pixel
-for (let i = 0; i < 25; i += 1) {
-  pixelCreate = document.createElement('div');
-  pixelCreate.className = 'pixel';
-  pixelBoard.appendChild(pixelCreate);
+// Funcção para criar linhas e colunas primeiro for para linhas e segundo para colunas.
+function createBoard(lines) {
+  for (let i = 0; i < lines; i += 1) {
+    const pixelLine = document.createElement('div');
+    pixelLine.className = 'pixelLines';
+    pixelBoard.appendChild(pixelLine);
+
+    for (let index = 0; index < lines; index += 1) {
+      const pixelCol = document.createElement('div');
+      pixelCol.className = 'pixel';
+      pixelLine.appendChild(pixelCol);
+    }
+  }
 }
+
+createBoard(5);
 
 // inicia com cor preta selecionada
 firstColor.classList.add('selected');
@@ -34,19 +43,23 @@ function changeColor(event) {
   const selectedColor = document.querySelector('.selected');
   const cssObj = window.getComputedStyle(selectedColor);
   const bgColor = cssObj.getPropertyValue('background-color');
-  event.target.style.backgroundColor = bgColor;
+  // event.target.style.backgroundColor = bgColor; - troca só para evitar erro esLint
+  const evTarget = event.target;
+  evTarget.style.backgroundColor = bgColor;
 }
 
 // insere eventListener na class pixel
-document.querySelectorAll('.pixel').forEach((item) => {
-  item.addEventListener('click', changeColor);
-});
+function listenerColor() {
+  document.querySelectorAll('.pixel').forEach((item) => {
+    item.addEventListener('click', changeColor);
+  });
+}
+listenerColor();
 
 // cria botão com id clear-board
 const clear = document.createElement('button');
 clear.id = 'clear-board';
 clear.innerText = 'Limpar';
-const colorPalette = document.querySelector('#color-palette');
 document.body.insertBefore(clear, pixelBoard);
 
 // função para limpar pixel por pixel
@@ -58,4 +71,35 @@ function clearBoard() {
 }
 
 // eventListener para o botão
-document.querySelector('#clear-board').addEventListener('click', clearBoard);
+function listenerClear() {
+  document.querySelector('#clear-board').addEventListener('click', clearBoard);
+}
+listenerClear();
+
+// função auxiliar para zerar pixels
+function clearPixels() {
+  while (pixelBoard.hasChildNodes()) {
+    pixelBoard.removeChild(pixelBoard.firstChild);
+  }
+}
+
+// essa função depois de verificar se input possue valor passa a remover os pixels para depois adicionar conforme inserido no input
+function altSize() {
+  const boardSize = document.getElementById('board-size').value;
+  if (boardSize === '') {
+    alert('Board inválido!');
+  } else if (boardSize > 50) {
+    clearPixels();
+    createBoard(50);
+  } else if (boardSize < 5) {
+    clearPixels();
+    createBoard(5);
+  } else {
+    clearPixels();
+    createBoard(boardSize);
+  }
+  listenerColor();
+  listenerClear();
+}
+
+document.querySelector('#generate-board').addEventListener('click', altSize);

@@ -4,15 +4,15 @@
 }
 
 #color-palette {
-    height: 58px;
+    height: 65px;
     width: auto;
 }
 
 .color {
   border: black solid 1px;
   display: inline-block;
-  height: 48px;
-  width: 48px;
+  height: 55px;
+  width: 55px;
 }
 
 .blue {
@@ -31,23 +31,21 @@
   background-color: green;
 }
 
-.white {
-  background-color: white;
-}
-
 .pixel {
   height: 40px;
   width: 40px;
   background-color: white;
   border: black 1px solid;
+  margin: 3px;
   display: inline-block;
 }
 
 #pixel-board {
-  width: 240px;
+  width: fit-content;
+  height: fit-content;
 }
 
 #clear-board {
   margin-bottom: 10px;
-  width: 210px;
+  background-color: orange;
 }
