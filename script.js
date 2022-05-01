@@ -60,7 +60,7 @@ listenerColor();
 const clear = document.createElement('button');
 clear.id = 'clear-board';
 clear.innerText = 'Limpar';
-document.body.insertBefore(clear, pixelBoard);
+document.getElementById('principal').insertBefore(clear, pixelBoard);
 
 // função para limpar pixel por pixel
 function clearBoard() {
